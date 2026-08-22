@@ -50,6 +50,8 @@ conda activate DS3dRNA
 python DS3dRNA.py --help
 ```
 
+The installer first restores the four model tensors from `Energy.zip`, then prepares the Conda/PyTorch environment. Re-running it safely skips extraction when all tensors are already present and valid.
+
 | Task | Command |
 | --- | --- |
 | RNA design (default) | `python DS3dRNA.py Examples/Design/inputs/8VY0.pdb --ss none --batch 10` |
