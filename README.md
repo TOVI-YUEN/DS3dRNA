@@ -52,7 +52,7 @@ python DS3dRNA.py --help
 
 | Task | Command |
 | --- | --- |
-| RNA design (default) | `python DS3dRNA.py Examples/Design/inputs/8VY0.pdb --batch 10` |
+| RNA design (default) | `python DS3dRNA.py Examples/Design/inputs/8VY0.pdb --ss none --batch 10` |
 | DNA design | `python DS3dRNA.py target_DNA.pdb --mol DNA --batch 10` |
 | Sequence ranking | `python DS3dRNA.py -rank --str target.pdb --fa candidates.fasta` |
 
