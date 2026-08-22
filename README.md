@@ -2,7 +2,7 @@
 
 # DS3dRNA
 
-### De novo design of 3D RNA via higher-order interactions
+### De novo design of 3D RNAs via higher-order interactions
 
 <p>
   <a href="INSTALL.md"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+"></a>
