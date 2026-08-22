@@ -5,6 +5,7 @@ set -euo pipefail
 # DS3dRNA installer
 #
 # What this script does:
+#   - Restores model energy tensors from Energy.zip when needed.
 #   - Creates / reuses conda environment:
 #       ${CONDA_BASE}/envs/DS3dRNA
 #   - Installs DS3dRNA-related Python dependencies.
@@ -26,6 +27,31 @@ PYTORCH_INDEX_URL="https://download.pytorch.org/whl/${PYTORCH_CUDA_TAG}"
 # Set this to "yes" if you also want torchvision/torchaudio.
 INSTALL_TORCH_EXTRA="${INSTALL_TORCH_EXTRA:-no}"
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+ENERGY_ARCHIVE="${SCRIPT_DIR}/Energy.zip"
+ENERGY_SPECS=(
+    "Energy/RNA/Rough.npy:2225792"
+    "Energy/RNA/Fine.npy:31270016"
+    "Energy/DNA/Rough_D.npy:2225792"
+    "Energy/DNA/Fine_D.npy:31270016"
+)
+
+energy_tensors_ready() {
+    local spec rel_path expected_size actual_size
+    for spec in "${ENERGY_SPECS[@]}"; do
+        rel_path="${spec%%:*}"
+        expected_size="${spec##*:}"
+        if [[ ! -f "${SCRIPT_DIR}/${rel_path}" ]]; then
+            return 1
+        fi
+        actual_size="$(stat -c '%s' "${SCRIPT_DIR}/${rel_path}")"
+        if [[ "${actual_size}" != "${expected_size}" ]]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
 echo "============================================================"
 echo "[DS3dRNA] DS3dRNA-only installer"
 echo "============================================================"
@@ -37,7 +63,47 @@ echo "============================================================"
 echo
 
 # ------------------------------------------------------------
-# 0. Locate conda
+# 0. Restore compressed model energy tensors
+# ------------------------------------------------------------
+echo "============================================================"
+echo "[CHECK] Model energy tensors"
+echo "============================================================"
+
+if energy_tensors_ready; then
+    echo "[OK] All four model energy tensors are already present."
+else
+    if [[ ! -f "${ENERGY_ARCHIVE}" ]]; then
+        echo "[ERROR] Required model tensors are missing and no archive was found:"
+        echo "        ${ENERGY_ARCHIVE}"
+        exit 1
+    fi
+    if ! command -v unzip >/dev/null 2>&1; then
+        echo "[ERROR] 'unzip' is required to extract ${ENERGY_ARCHIVE}."
+        echo "        Install unzip with your system package manager and rerun this installer."
+        exit 1
+    fi
+
+    echo "[INFO] Extracting model tensors from: ${ENERGY_ARCHIVE}"
+    unzip -tq "${ENERGY_ARCHIVE}" >/dev/null
+    unzip -oq "${ENERGY_ARCHIVE}" \
+        "Energy/RNA/Rough.npy" \
+        "Energy/RNA/Fine.npy" \
+        "Energy/DNA/Rough_D.npy" \
+        "Energy/DNA/Fine_D.npy" \
+        -d "${SCRIPT_DIR}"
+
+    if ! energy_tensors_ready; then
+        echo "[ERROR] Energy extraction completed, but one or more tensors have an unexpected size."
+        echo "        Delete the incomplete Energy/RNA and Energy/DNA tensor files,"
+        echo "        replace Energy.zip with a valid release archive, and rerun the installer."
+        exit 1
+    fi
+    echo "[OK] Model energy tensors extracted and validated."
+fi
+echo
+
+# ------------------------------------------------------------
+# 1. Locate conda
 # ------------------------------------------------------------
 if ! command -v conda >/dev/null 2>&1; then
     echo "[ERROR] conda was not found in PATH."
@@ -57,7 +123,7 @@ echo "[INFO] env prefix : ${ENV_PREFIX}"
 echo
 
 # ------------------------------------------------------------
-# 1. Install mamba if missing
+# 2. Install mamba if missing
 # ------------------------------------------------------------
 if ! command -v mamba >/dev/null 2>&1; then
     echo "[INFO] mamba not found. Installing mamba into base..."
@@ -68,7 +134,7 @@ fi
 echo
 
 # ------------------------------------------------------------
-# 2. GPU / driver information
+# 3. GPU / driver information
 # ------------------------------------------------------------
 echo "============================================================"
 echo "[CHECK] NVIDIA driver / GPU"
@@ -82,7 +148,7 @@ fi
 echo
 
 # ------------------------------------------------------------
-# 3. Create environment by absolute prefix
+# 4. Create environment by absolute prefix
 # ------------------------------------------------------------
 echo "============================================================"
 echo "[STEP] Creating / reusing conda environment"
@@ -109,7 +175,7 @@ python --version
 echo
 
 # ------------------------------------------------------------
-# 4. Install DS3dRNA Python packages with pip
+# 5. Install DS3dRNA Python packages with pip
 # ------------------------------------------------------------
 echo "============================================================"
 echo "[STEP] Installing DS3dRNA Python packages with pip"
@@ -138,7 +204,7 @@ python -m pip install \
 echo
 
 # ------------------------------------------------------------
-# 5. Install PyTorch cu128
+# 6. Install PyTorch cu128
 # ------------------------------------------------------------
 echo "============================================================"
 echo "[STEP] Installing PyTorch CUDA 12.8 wheel"
@@ -157,7 +223,7 @@ fi
 echo
 
 # ------------------------------------------------------------
-# 6. Write environment checker
+# 7. Write environment checker
 # ------------------------------------------------------------
 echo "============================================================"
 echo "[STEP] Writing environment checker"
@@ -249,7 +315,7 @@ echo "     python ${HOME}/check_DS3dRNA_env.py"
 echo
 
 # ------------------------------------------------------------
-# 7. Run checks
+# 8. Run checks
 # ------------------------------------------------------------
 echo "============================================================"
 echo "[STEP] Running environment checks"
