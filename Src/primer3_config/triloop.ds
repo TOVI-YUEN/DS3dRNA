@@ -1,0 +1,22 @@
+# Entropy Hairpin loop GNA triloop bonus
+# values are in cal / mol K
+
+# Values in this file originate from:
+# SantaLucia, Hicks, "The Thermodynamics of DNA Structural Motifs". Supplemental Material. Annu Rev Biophys Biomol Struct. 2004:33:415-40. doi: 10.1146/annurev.biophys.32.110601.141800.
+
+AGAAT	0
+AGCAT	0
+AGGAT	0
+AGTAT	0
+CGAAG	0
+CGCAG	0
+CGGAG	0
+CGTAG	0
+GGAAC	0
+GGCAC	0
+GGGAC	0
+GGTAC	0
+TGAAA	0
+TGCAA	0
+TGGAA	0
+TGTAA	0
