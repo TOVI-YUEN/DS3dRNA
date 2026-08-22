@@ -8,7 +8,7 @@ Please cite the DS3dRNA manuscript when using the design or ranking workflow:
 
 > Tongwei Yuan, Dong Wang, Xiaocong Zhao, Xinlong Chen, Hanlin Tao, Ya-Lan Tan, Xing-Hua Zhang, and Zhi-Jie Tan. “De novo design of 3D RNAs via higher-order interactions.” (2026). To be published.
 
-Until a permanent journal or preprint identifier is available, retain the “To be published” status rather than inventing a DOI or venue.
+Preprint is coming soon…
 
 ## TriRNASP energy model
 
