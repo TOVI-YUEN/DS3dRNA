@@ -1,6 +1,6 @@
 <div align="center">
 
-# DS3dRNA
+# DS3dRNA:Physics-guided de novo design of functional RNAs through higher-order interactions
 
 ### De novo design of 3D RNAs via higher-order interactions
 
