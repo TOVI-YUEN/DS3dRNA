@@ -5,6 +5,15 @@
 ### De novo design of 3D RNAs via higher-order interactions
 
 <p>
+  <a href="https://tpformer.com/talks/ds3drna-2026"><img src="https://img.shields.io/badge/2026%20Conference%20Talk-View%20Presentation-0F766E?style=for-the-badge" alt="View the 2026 DS3dRNA conference presentation"></a>
+</p>
+
+<p>
+  <a href="https://tpformer.com/talks/ds3drna-2026"><strong>De Novo 3D RNA Design Using Higher-Order Interactions</strong></a><br>
+  Oral presentation · 14th National Conference on Soft Matter and Biological Physics
+</p>
+
+<p>
   <a href="INSTALL.md"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python 3.10+"></a>
   <a href="INSTALL.md"><img src="https://img.shields.io/badge/PyTorch-CUDA%2012.8-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch with CUDA 12.8"></a>
   <a href="docs/INPUTS.md#rna-and-dna-molecule-modes"><img src="https://img.shields.io/badge/Molecules-RNA%20%7C%20DNA-16A085" alt="RNA and DNA"></a>
