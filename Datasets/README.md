@@ -38,8 +38,6 @@ The report covers 25 T25 targets and 83 T83 targets in each of three design mode
 - **Panel a:** energy versus recorded step for the 100 runs, with a median trend and interquartile band summarizing run-level step-bin means.
 - **Panel b:** Recovery and MacroF1 versus energy, summarized using run-level energy-bin means, with median trends and interquartile bands. Annotations give the corresponding energy–Recovery and energy–MacroF1 Spearman coefficients, calculated from all unbinned retained records pooled across the 100 runs. Negative coefficients indicate that lower energy is associated with higher sequence recovery or MacroF1.
 
-**Interpretation:** the profiles use `trajTopE_10000*.csv.zip` records, which retain each unique sequence's lowest-energy occurrence within a run. The plotted `step_min` is the step at which that retained sequence reached its minimum energy; these records do **not** reconstruct every state of the complete 10,000-step trajectory. Spearman coefficients weight retained records equally, without weighting by visit count. The shaded bands describe variation across runs, not confidence intervals. This download is a plotted PDF report, not an archive of the raw trajectory files.
-
 Dataset users should record the accessed file names and versions in their methods. Cite both DS3dRNA and TriRNASP as described in [CITATIONS.md](../CITATIONS.md), and retain any dataset-specific provenance or license files included with a download.
 
 The external folder's availability and access permissions are managed independently of this repository.
