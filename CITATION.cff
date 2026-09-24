@@ -1,4 +1,4 @@
-cff-version: 1.0.0
+cff-version: 1.2.0
 message: "If you use DS3dRNA, please cite both the DS3dRNA manuscript and the TriRNASP publication."
 title: "DS3dRNA"
 type: software
@@ -11,25 +11,25 @@ abstract: "De novo sequence design for target three-dimensional RNA scaffolds us
 preferred-citation:
   type: article
   title: "De novo design of functional RNAs through higher-order interactions"
- authors:
-   - family-names: "Yuan"
-     given-names: "Tongwei"
-   - family-names: "Wang"
-     given-names: "Dong"
-   - family-names: "Chen"
-     given-names: "Xin-Long"
-   - family-names: "Tao"
-     given-names: "Han-Lin"
-   - family-names: "Zheng"
-     given-names: "Chen-Chen"
-   - family-names: "Tan"
-     given-names: "Ya-Lan"
-   - family-names: "Zhao"
-     given-names: "Xiaocong"
-   - family-names: "Zhang"
-     given-names: "Xing-Hua"
-   - family-names: "Tan"
-     given-names: "Zhi-Jie"
+  authors:
+    - family-names: "Yuan"
+      given-names: "Tongwei"
+    - family-names: "Wang"
+      given-names: "Dong"
+    - family-names: "Chen"
+      given-names: "Xin-Long"
+    - family-names: "Tao"
+      given-names: "Han-Lin"
+    - family-names: "Zheng"
+      given-names: "Chen-Chen"
+    - family-names: "Tan"
+      given-names: "Ya-Lan"
+    - family-names: "Zhao"
+      given-names: "Xiaocong"
+    - family-names: "Zhang"
+      given-names: "Xing-Hua"
+    - family-names: "Tan"
+      given-names: "Zhi-Jie"
   year: 2026
   notes: "To be published"
 references:
