@@ -2,11 +2,13 @@
 
 # DS3dRNA: De novo design of functional RNAs through higher-order interactions
 
+<p>
+  <a href="https://doi.org/10.64898/2026.09.26.754601"><img src="https://img.shields.io/badge/bioRxiv-Read%20the%20Paper-B31B1B?style=for-the-badge" alt="Read the DS3dRNA paper on bioRxiv"></a>
+</p>
+
 ### De novo design of 3D RNAs via higher-order interactions
 
 **[Read the bioRxiv preprint](https://www.biorxiv.org/content/10.64898/2026.09.26.754601v1)** · Posted September 26, 2026
-
-[![bioRxiv preprint](https://img.shields.io/badge/bioRxiv-2026.09.26.754601-B31B1B)](https://doi.org/10.64898/2026.09.26.754601)
 
 <p>
   <a href="https://tpformer.com/talks/ds3drna-2026"><img src="https://img.shields.io/badge/2026%20Conference%20Talk-View%20Presentation-0F766E?style=for-the-badge" alt="View the 2026 DS3dRNA conference presentation"></a>
